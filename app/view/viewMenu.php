@@ -7,7 +7,7 @@ include 'fragment/fragmentHeader.html'; ?>
     <?php
     include 'fragment/fragmentMenu.php';
     ?>
-    <div class="mt-4 p-5 bg-success text-white rounded">
+    <div class="mt-4 p-5 text-white rounded">
     <h1>Patrimoine 2024 </h1>
     <p>Inventaire de vos richesses... <?php echo   $_SESSION['login']?></p>
     </div>

@@ -8,7 +8,7 @@ require ($root . '/app/view/fragment/fragmentHeader.html');
 
 <body>
   <div class="container">
-      <h1 class="text-danger"></h1>
+      <h1 class="text-info"> Formulaire de connexion</h1>
     <?php
       include $root . '/app/view/fragment/fragmentMenu.php';
     ?> 

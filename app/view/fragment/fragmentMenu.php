@@ -1,7 +1,7 @@
 
 <!-- ----- début fragmentCaveMenu -->
 
-<nav class="navbar navbar-expand-lg bg-success fixed-top">
+<nav class="navbar navbar-expand-lg bg-warning fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="router.php?action='menu'">HUGOT - KHUU
             <?php
