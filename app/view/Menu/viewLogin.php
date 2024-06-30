@@ -13,7 +13,7 @@ require ($root . '/app/view/fragment/fragmentHeader.html');
       include $root . '/app/view/fragment/fragmentMenu.php';
     ?> 
 
-    <form role="form" method='get' action='router.php'>
+      <form role="form" method='get' action='router.php'>
       <div class="form-group">
         <input type="hidden" name='action' value='connexion'>        
         <label class='w-25' for="id">Nom : </label><input type="text" name='nom' size='75' > <br/>                          

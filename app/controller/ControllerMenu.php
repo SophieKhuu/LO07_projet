@@ -27,10 +27,10 @@ class ControllerMenu {
    public static function connexion() {
   include 'config.php';
   $resultat = ModelPersonne::connect($_GET["nom"],$_GET["prenom"], $_GET["login"], $_GET["password"]);
-  if ($resultat != -1){
-      $_SESSION['login'] = $resultat;
-      $_SESSION['Nom'] = $_GET["nom"];
-      $_SESSION['Prenom'] = $_GET["prenom"];
+  if ($resultat != NULL){
+      $_SESSION['login'] = $resultat["statut"];
+      $_SESSION['Nom'] = $resultat["nom"];
+      $_SESSION['Prenom'] = $resultat["prenom"];
   }
 
   $vue = $root . '/app/view/viewMenu.php';

@@ -44,18 +44,20 @@ class ModelPersonne {
     public static function connect($nom,$prenom,$login,$password) {
         try {          
           $database = Model::getInstance();
-          $query= "SELECT statut FROM `personne` WHERE nom='$nom' && prenom='$prenom' && login = '$login' && password = '$password';";
+          $query= "SELECT nom, prenom, statut FROM `personne` WHERE nom='$nom' && prenom='$prenom' && login = '$login' && password = '$password';";
           $statement = $database->prepare($query);
           $statement->execute();
-          $resultatStatut = $statement->fetch(PDO::FETCH_COLUMN);
-          if (isset($resultatStatut)){          return ($resultatStatut);}
-        else    {return(-1);}
+          $resultatStatut = $statement->fetch(PDO::FETCH_ASSOC);
+          if ($resultatStatut != NULL){          
+              return ($resultatStatut);}
+          else    {
+              return NULL;}
           }
           
 
         catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-        return -1;
+            return NULL;
   }
 
     }
