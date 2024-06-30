@@ -18,6 +18,7 @@ class ControllerAdministrateur {
     require ($vue);
     }
     
+    // Liste des clients
     public static function administrateurReadClient(){
         $results = ModelPersonne::getClient();
         include 'config.php';
@@ -27,6 +28,7 @@ class ControllerAdministrateur {
     require ($vue);
     }
 
+    // Liste des administrateurs
     public static function administrateurReadAdministrateur(){
         $results = ModelPersonne::getAdministrateur();
         include 'config.php';
@@ -36,6 +38,7 @@ class ControllerAdministrateur {
     require ($vue);
     }
 
+    // Liste des comptes
     public static function administrateurReadCompte(){
         $results = ModelCompte::getAll();
         include 'config.php';
@@ -45,6 +48,7 @@ class ControllerAdministrateur {
     require ($vue);
     }    
  
+    // Liste des résidences
     public static function administrateurReadResidence(){
         $results = ModelResidence::getAll();
         include 'config.php';

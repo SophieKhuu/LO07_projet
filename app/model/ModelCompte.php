@@ -34,6 +34,7 @@ class ModelCompte {
         return $this->personne_id;
     }
 
+    // affichage des tous les comptes
    public static function getAll(){
        try{
            $database = Model::getInstance();

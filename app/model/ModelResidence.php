@@ -33,6 +33,7 @@ class ModelResidence {
         return $this->personne_id;
     }
 
+    // affichage de toutes les résidences 
    public static function getAll(){
        try{
            $database = Model::getInstance();

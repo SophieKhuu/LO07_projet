@@ -85,6 +85,7 @@ class ModelPersonne {
        }
    }
 
+   // affichage de tous les administrateurs
    public static function getAdministrateur(){
        try{
            $database = Model::getInstance();
