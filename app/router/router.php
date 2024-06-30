@@ -1,5 +1,5 @@
 
-<!-- ----- debut Router1 -->
+<!-- ----- debut Router -->
 <?php
 require ('../controller/ControllerAdministrateur.php');
 require ('../controller/ControllerClient.php');
@@ -24,16 +24,16 @@ unset($param['action']);
 $args = $param;
 
 // --- Liste des méthodes autorisées
-/*switch ($action) {
+switch ($action) {
  case "mesPropositions":
      ControllerCave::$action($args);
   break;
 
  // Tache par défaut
  default:
-  $action = "caveAccueil";
-  ControllerCave::$action($args);
-}/*
+  $action = "menu";
+  ControllerMenu::$action($args);
+}
 ?>
-<!-- ----- Fin Router1 -->
+<!-- ----- Fin Router -->
 

@@ -1,5 +1,5 @@
 
-<!-- ----- debut ControllerCave-->
+<!-- ----- debut ControllerAdministrateur-->
 <?php
 
 class ControllerAdministrateur {
@@ -7,6 +7,6 @@ class ControllerAdministrateur {
  
 }
 ?>
-<!-- ----- fin ControllerCave -->
+<!-- ----- fin ControllerAdministrateur -->
 
 

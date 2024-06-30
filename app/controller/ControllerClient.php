@@ -1,5 +1,5 @@
 
-<!-- ----- debut ControllerCave-->
+<!-- ----- debut ControllerClient-->
 <?php
 
 class ControllerClient {
@@ -7,6 +7,6 @@ class ControllerClient {
  
 }
 ?>
-<!-- ----- fin ControllerCave -->
+<!-- ----- fin ControllerClient -->
 
 

@@ -1,4 +1,4 @@
 <?php
-echo "hello world";
+header('Location: app/router/router.php?action=truc');
 ?>
 
