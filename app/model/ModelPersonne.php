@@ -1,5 +1,5 @@
 
-<!-- ----- debut ModelVin -->
+<!-- ----- debut ModelPersonne -->
 
 <?php
 require_once 'Model.php';
@@ -41,6 +41,7 @@ class ModelPersonne {
         return $this->password;
     }
     
+    // cherche dans la base de donnée l'existence d'un client
     public static function connect($nom,$prenom,$login,$password) {
         try {          
           $database = Model::getInstance();
@@ -61,7 +62,40 @@ class ModelPersonne {
   }
 
     }
+    
+    // créer un client
+    public static function insertClient($nom,$prenom,$login,$password){
+        
+    try {
+    $database = Model::getInstance();
 
+    // recherche de la valeur de la clé = max(id) + 1
+    $query = "select max(id) from personne";
+    $statement = $database->query($query);
+    $tuple = $statement->fetch();
+    $id = $tuple['0'];
+    $id++;
+
+    // ajout d'un nouveau tuple;
+    $query = "insert into personne value (:id, :nom, :prenom, :statut, :login, :password)";
+    $statement = $database->prepare($query);
+    $statement->execute([
+     'id' => $id,
+     'nom' => $nom,
+     'prenom' => $prenom,
+     'statut' => self::CLIENT,
+     'login' => $login,
+     'password' => $password
+   ]);
+   return $id;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return null;
+  }
+        
+    }
+    
+    
     // affichage des clients
    public static function getClient(){
        try{
@@ -110,4 +144,4 @@ class ModelPersonne {
 
 }
 ?>
-<!-- ----- fin ModelVin -->
+<!-- ----- fin ModelPersonne -->

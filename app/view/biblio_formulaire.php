@@ -24,6 +24,18 @@ function form_input_text($label, $name, $size, $value) {
 }
 
 // --------------------------------------------------
+// form_input_password
+// --------------------------------------------------
+
+function form_input_password($label, $name, $size, $value) {
+    echo ("\n<!-- form_input_password : $label $name $size $value -->\n");
+    echo ("<div class='form-group col-6'>");
+    echo (" <label for='$label' class=' fw-bold'>$label</label>");
+    echo (" <input type='password' class='form-control' name='$name' size='$size' value='$value' >");
+    echo ("</div>");
+}
+
+// --------------------------------------------------
 // form_input_hidden
 // --------------------------------------------------
 

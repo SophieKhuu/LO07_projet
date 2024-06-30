@@ -39,10 +39,22 @@ class ControllerMenu {
   require ($vue);
  }
  
- // création d'un compte
+ // formulaire de création d'un compte
   public static function inscription() {
   include 'config.php';
-  $vue = $root . '/app/view/viewMenu.php';
+  $vue = $root . '/app/view/Menu/viewRegistration.php';
+  if (DEBUG)
+   echo ("ControllerMenu : menu : vue = $vue");
+  require ($vue);
+ }
+ 
+ // création du compte
+   public static function registration() {
+  include 'config.php';
+  $resultat = ModelPersonne::insertClient(
+          htmlspecialchars($_GET['nom']), htmlspecialchars($_GET['prenom']), htmlspecialchars($_GET['login']), htmlspecialchars($_GET['password']));
+ 
+  $vue = $root . '/app/view/Menu/viewRegistred.php';
   if (DEBUG)
    echo ("ControllerMenu : menu : vue = $vue");
   require ($vue);

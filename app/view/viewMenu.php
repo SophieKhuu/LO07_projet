@@ -9,7 +9,7 @@ include 'fragment/fragmentHeader.html'; ?>
     ?>
     <div class="mt-4 p-5 text-white rounded">
     <h1>Patrimoine 2024 </h1>
-    <p>Inventaire de vos richesses... <?php echo   $_SESSION['login']?></p>
+    <p>Inventaire de vos richesses... </p>
     </div>
     <p/>
 

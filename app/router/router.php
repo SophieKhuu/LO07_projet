@@ -31,6 +31,7 @@ switch ($action) {
  case "login":
  case "connexion":
  case "inscription":
+ case "registration":
  case "deconnexion":
      ControllerMenu::$action($args);
      break;

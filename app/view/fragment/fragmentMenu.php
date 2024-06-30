@@ -1,14 +1,16 @@
 
 <!-- ----- début fragmentMenu -->
-
+<?php
+require_once '../model/ModelPersonne.php';
+?>
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="router.php?action='menu'">HUGOT - KHUU
             <?php
-                    if ($_SESSION["login"]== 0){
+                    if ($_SESSION["login"]== ModelPersonne::ADMINISTRATEUR){
                         echo "Administrateur || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
                     }
-                    elseif ($_SESSION["login"]== 1){
+                    elseif ($_SESSION["login"]== ModelPersonne::CLIENT){
                         echo "Client || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
                     }
 ?>
@@ -22,10 +24,10 @@
           
         <?php
 
-        if ($_SESSION["login"]== '0'){
+        if ($_SESSION["login"]== ModelPersonne::ADMINISTRATEUR){
             include'fragmentMenuAdministrateur.html';
         }
-        elseif ($_SESSION["login"]== '1') {
+        elseif ($_SESSION["login"]== ModelPersonne::CLIENT) {
             include 'fragmentMenuClient.html';
         }
         ?>
