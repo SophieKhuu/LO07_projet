@@ -1,11 +1,19 @@
 <!-- ===== début fragmentMenuAdministrateur -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrateur</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Banques</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router2.php?action=vinReadAll">Liste des vins</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=vinReadId&target=vinReadOne">Sélection d'un vin par son id</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=vinCreate">Insertion d'un vin</a></li> 
-            <li><a class="dropdown-item" href="router2.php?action=vinReadId&target=vinDeleted">Suppression d'un vin</a></li> 
+            <li><a class="dropdown-item" href="router.php?action=administrateurReadBanque">Liste des banques</a></li>
+            <li><a class="dropdown-item" href="router.php?action=administrateurAddBanque">Ajout d'une banque</a></li>
+            <li><a class="dropdown-item" href="router.php?action=administrateurBanqueComptes">Liste des comptes d'une banque</a></li> 
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clients</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="router.php?action=administrateurReadClient">Liste des clients</a></li>
+            <li><a class="dropdown-item" href="router.php?action=administrateurReadAdministrateur">Liste des administrateurs</a></li>
+            <li><a class="dropdown-item" href="router.php?action=administrateurReadCompte">Liste des comptes</a></li> 
+            <li><a class="dropdown-item" href="router.php?action=administrateurReadResidence">Liste des résidences</a></li>             
           </ul>
         </li>
                 

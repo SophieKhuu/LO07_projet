@@ -13,14 +13,14 @@ $username = 'khuusoph';
 $passwordConfig = 'l53yFldD';
 
 if (!defined('LOCAL')) {
-    define('LOCAL', FALSE);
+    define('LOCAL', TRUE);
 }
 
 if (LOCAL) {
     // Configuration de la base de données sur localhost
     $dsn = 'mysql:dbname=TEST;host=localhost;charset=utf8';
     $username = 'root';
-    $passwordConfig = 'root';
+    $passwordConfig = '';
 }
  
 // chemin absolu vers le répertoire du projet SUR DEV-ISI 

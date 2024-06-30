@@ -62,8 +62,50 @@ class ModelPersonne {
 
     }
 
+    // affichage des clients
+   public static function getClient(){
+       try{
+           $database = Model::getInstance();
+           $query = "select nom, prenom, login, password from personne WHERE statut=1";
+           $statement= $database->prepare($query);
+           $statement->execute();
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }
 
-
+   public static function getAdministrateur(){
+       try{
+           $database = Model::getInstance();
+           $query = "select nom, prenom, login, password from personne WHERE statut=0";
+           $statement= $database->prepare($query);
+           $statement->execute();
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }
 
 }
 ?>

@@ -33,7 +33,27 @@ class ModelResidence {
         return $this->personne_id;
     }
 
-
+   public static function getAll(){
+       try{
+           $database = Model::getInstance();
+           $query = "select P.nom as client_nom, P.prenom as client_prenom, R.label as residence_label, R.ville as residence_ville, R.prix as residence_prix from residence as R, personne as P WHERE R.personne_id = P.id";
+           $statement= $database->prepare($query);
+           $statement->execute();
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }
 
 
 

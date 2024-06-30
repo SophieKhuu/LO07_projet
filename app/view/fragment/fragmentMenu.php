@@ -1,5 +1,5 @@
 
-<!-- ----- début fragmentCaveMenu -->
+<!-- ----- début fragmentMenu -->
 
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
   <div class="container-fluid">
@@ -51,5 +51,5 @@
   </div>
 </nav> 
 
-<!-- ----- fin fragmentCaveMenu -->
+<!-- ----- fin fragmentMenu -->
 

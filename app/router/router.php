@@ -34,6 +34,13 @@ switch ($action) {
  case "deconnexion":
      ControllerMenu::$action($args);
      break;
+ case "administrateurReadBanque":
+ case "administrateurReadClient":
+ case "administrateurReadAdministrateur":
+ case "administrateurReadCompte": 
+  case "administrateurReadResidence": 
+     ControllerAdministrateur::$action($args);
+     break;
  // Tache par défaut
  default:
   $action = "menu";
