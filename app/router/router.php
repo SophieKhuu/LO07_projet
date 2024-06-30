@@ -3,6 +3,7 @@
 <?php
 require ('../controller/ControllerAdministrateur.php');
 require ('../controller/ControllerClient.php');
+require ('../controller/ControllerMenu.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -23,12 +24,16 @@ unset($param['action']);
 // --- Tout ce qui reste sont des arguments
 $args = $param;
 
+session_start();
+
 // --- Liste des méthodes autorisées
 switch ($action) {
- case "mesPropositions":
-     ControllerCave::$action($args);
-  break;
-
+ case "login":
+ case "connexion":
+ case "inscription":
+ case "deconnexion":
+     ControllerMenu::$action($args);
+     break;
  // Tache par défaut
  default:
   $action = "menu";

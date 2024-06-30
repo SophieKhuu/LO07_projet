@@ -1,4 +1,3 @@
-
 <!-- ----- debut config -->
 <?php
 
@@ -11,7 +10,7 @@ if (!defined('DEBUG')) {
 // Configuration de la base de données sur dev-isi
 $dsn = 'mysql:dbname=khuusoph;host=localhost;charset=utf8';
 $username = 'khuusoph';
-$password = 'l53yFldD';
+$passwordConfig = 'l53yFldD';
 
 if (!defined('LOCAL')) {
     define('LOCAL', FALSE);
@@ -19,9 +18,9 @@ if (!defined('LOCAL')) {
 
 if (LOCAL) {
     // Configuration de la base de données sur localhost
-    $dsn = 'mysql:dbname=CAVE;host=localhost;charset=utf8';
+    $dsn = 'mysql:dbname=TEST;host=localhost;charset=utf8';
     $username = 'root';
-    $password = '';
+    $passwordConfig = 'root';
 }
  
 // chemin absolu vers le répertoire du projet SUR DEV-ISI 
@@ -32,7 +31,7 @@ if (DEBUG) {
  echo ("<ul>");
  echo (" <li>dsn = $dsn</li>");
  echo (" <li>username = $username</li>");
- echo (" <li>password = $password</li>");
+ echo (" <li>password = $passwordConfig</li>");
  echo ("<li>---</li>");
  echo (" <li>root = $root</li>");
 

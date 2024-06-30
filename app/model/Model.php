@@ -13,15 +13,15 @@ class Model extends PDO {
  //Singleton
  public static function getInstance() {
   // les variables sont définies dans le fichier config.php
-  include_once '../controller/config.php';
+  include '../controller/config.php';
   
-  if (DEBUG) echo ("Model : getInstance : dsn = $dsn</br>");
+  //if (DEBUG) echo ("Model : getInstance : dsn = $dsn</br>");
 
   $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
   if (!isset(self::$_instance)) {
    try {
-    self::$_instance = new PDO($dsn, $username, $password, $options);
+    self::$_instance = new PDO($dsn, $username, $passwordConfig, $options);
    } catch (PDOException $e) {
     printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
    }

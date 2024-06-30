@@ -40,6 +40,25 @@ class ModelPersonne {
     public function getPassword() {
         return $this->password;
     }
+    
+    public static function connect($nom,$prenom,$login,$password) {
+        try {          
+          $database = Model::getInstance();
+          $query= "SELECT statut FROM `personne` WHERE nom='$nom' && prenom='$prenom' && login = '$login' && password = '$password';";
+          $statement = $database->prepare($query);
+          $statement->execute();
+          $resultatStatut = $statement->fetch(PDO::FETCH_COLUMN);
+          if (isset($resultatStatut)){          return ($resultatStatut);}
+        else    {return(-1);}
+          }
+          
+
+        catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return -1;
+  }
+
+    }
 
 
 
