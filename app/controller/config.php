@@ -13,7 +13,7 @@ $username = 'khuusoph';
 $passwordConfig = 'l53yFldD';
 
 if (!defined('LOCAL')) {
-    define('LOCAL', false);
+    define('LOCAL', true);
 }
 
 if (LOCAL) {
