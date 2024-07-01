@@ -86,21 +86,25 @@ class ModelCompte {
     $database = Model::getInstance();
 
     // recherche de la valeur de la clé = max(id) + 1
-    $query = "select max(id) from Compte";
+    $query = "select max(id) from compte";
     $statement = $database->query($query);
     $tuple = $statement->fetch();
     $id = $tuple['0'];
     $id++;
     
-    // recherche de la personne id
-    $query = "select id from personne where nom = $nom &&  prenom = $prenom";
-    $statement = $database->query($query);
-    $tuple = $statement->fetch();
-    $idPersonne = $tuple['0'];
+    //recherche de la personne id
+    $query = "select id from personne where nom = :nom  and  prenom = :prenom";
+    $statement = $database->prepare($query);
+    $statement->execute([
+        'nom' => $nom,
+        'prenom' =>$prenom
+    ]);
+    $tuple = $statement->fetch(PDO::FETCH_ASSOC);
+    $idPersonne = $tuple['id'];
     
     
     // ajout d'un nouveau tuple;
-    $query = "insert into Compte value (:id, :label, :montant, :banque_id, :personne_id)";
+    $query = "insert into compte value (:id, :label, :montant, :banque_id, :personne_id)";
     $statement = $database->prepare($query);
     $statement->execute([
      'id' => $id,
@@ -109,7 +113,7 @@ class ModelCompte {
      'banque_id' => $idBanque,
      'personne_id' => $idPersonne
    ]);
-   return $id;
+   return ($idPersonne);
   } catch (PDOException $e) {
    printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
    return null;
