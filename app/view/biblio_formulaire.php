@@ -64,21 +64,22 @@ function form_check($label, $name, $value){
 // Parametre $multiple : si cet attribut n'est pas vide alors sélection multiple possible
 // Parametre $size     : attribut size de la balise select
 // Parametre $liste    : un liste d'options. Vous utiliserez un foreach pour générer les balises option
+// Parametre $valeur   : le nom de la valeur reprise du tuple qui sera montré 
 
-function form_select($label, $name, $multiple, $size, $liste) {
+function form_select($label, $name, $multiple, $size, $liste, $valeur) {
                 echo ("\n<!-- form_select : $label, $name, $multiple, $size,");
                 print_r($liste);
                 echo(" -->\n");
                 echo (" <label class='fw-bold'>$label</label>");
                 echo '<div>'; 
                 if ($multiple != ""){
-                echo("<select class='form-select' name='$name"."[]' size='$size' multiple='multiple' >");
+                echo("<select class='form-control' name='$name"."[]' size='$size' multiple='multiple' >");
                 }
                 else {
-                echo("<select class='form-select' name='$name' size='$size' >");
+                echo("<select class='form-control' name='$name' size='$size' >");
                 }
                         foreach($liste as $val){
-                        echo("<option value='$val'>$val</option>");
+                        echo("<option>".$val['id']."</option>");
                         }
                 echo'</select>';
                 echo '</div>';
