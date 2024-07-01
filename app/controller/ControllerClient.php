@@ -17,6 +17,7 @@ class ControllerClient {
     require ($vue);
     }
     
+    // Affiche le formulaire pour ajouter un nouveau compte
     public static function clientAddCompte(){    
     include 'config.php';
     $results = ModelBanque::getAll();
@@ -26,6 +27,7 @@ class ControllerClient {
     require ($vue);
     }
     
+    // Transmet les informations pour la création d'un nouveau compte et affiche la page du compte créé
     public static function clientInsertedCompte(){
     include 'config.php';
     $results = ModelCompte::insertCompte(
@@ -69,6 +71,7 @@ class ControllerClient {
         
     }
 
+    // Liste des résidences du client
     public static function clientReadMyResidence(){
         $results = ModelResidence::getMyResidence($_SESSION['Nom'], $_SESSION['Prenom']);
         include 'config.php';
@@ -78,6 +81,7 @@ class ControllerClient {
     require ($vue);
     }    
 
+<<<<<<< HEAD
 
     public static function clientAddResidence(){
         include 'config.php';
@@ -118,6 +122,17 @@ class ControllerClient {
     }
     
     
+=======
+    // Affiche le patrimoine du client 
+    public static function clientReadPatrimoine(){
+        $results = ModelCompte::getMyPatrimoine($_SESSION['Nom'], $_SESSION['Prenom']);
+        include 'config.php';
+        $vue = $root.'/app/view/viewAll.php';
+    if (DEBUG)
+        echo ("ControllerClient : clientReadMyCompte : vue = $vue");
+    require ($vue);
+    }
+>>>>>>> 211d1913bdb544f4b299357ad8c6b7df4fb0dce7
 }
 ?>
 <!-- ----- fin ControllerClient -->
