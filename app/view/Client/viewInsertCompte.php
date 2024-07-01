@@ -13,7 +13,7 @@ include $root . '/app/view/fragment/fragmentMenu.php';
       form_input_hidden('action', "clientInsertedCompte");
         form_input_text("label", "label", "100", "");
         form_input_text("montant", "montant", "50", "");
-        
+        form_select("Sélectionner une banque", "banque", "", "10", $resultat[1], "id");
         form_input_submit("submit");
         form_input_reset("reset");
         form_end();
