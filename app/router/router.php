@@ -35,6 +35,7 @@ switch ($action) {
  case "registration":
  case "deconnexion":
  case "fonctionnalite":
+ case "fonctionnalitePatrimoine":
  case "amelioration":
      ControllerMenu::$action($args);
      break;

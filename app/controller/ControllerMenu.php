@@ -71,10 +71,20 @@ class ControllerMenu {
  }
  
  public static function fonctionnalite(){
+  $results = ModelPersonne::getClient();
   include 'config.php';
   $vue = $root . '/app/view/Innovations/viewFonctionnalite.php';
   if (DEBUG)
    echo ("ControllerMenu : fonctionnalite : vue = $vue");
+  require ($vue);
+ }
+ 
+  public static function fonctionnalitePatrimoine(){
+  $results = ModelPersonne::getPatrimoine(htmlspecialchars($_GET['prenom']));
+  include 'config.php';
+  $vue = $root . '/app/view/viewAll.php';
+  if (DEBUG)
+   echo ("ControllerMenu : fonctionnalitePatrimoine : vue = $vue");
   require ($vue);
  }
  

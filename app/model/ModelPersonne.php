@@ -140,6 +140,40 @@ class ModelPersonne {
        }
    }
 
+   public static function getPatrimoine($prenom){
+              try{
+           $database = Model::getInstance();
+           $query = "SELECT * , SUM(Valeur) over(ORDER BY Valeur) AS Capital 
+                        from (
+                                SELECT 'compte' as Catégorie, C.label, C.montant as Valeur 
+                                        FROM compte as C, personne as P 
+                                        WHERE C.personne_id= P.id AND P.prenom = :prenom 
+                            UNION 
+                                SELECT 'résidence' as Catégorie, R.label, R.prix as Valeur 
+                                        FROM residence as R, personne as P 
+                                        WHERE R.personne_id=P.id AND P.prenom = :prenom
+                            ) 
+                        as patrimoine ";
+           $statement= $database->prepare($query);
+           $statement->execute([
+               'prenom' => $prenom
+            ]);
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }   
+   
 }
 ?>
 <!-- ----- fin ModelPersonne -->

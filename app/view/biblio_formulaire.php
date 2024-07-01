@@ -65,7 +65,8 @@ function form_check($label, $name, $value){
 // Parametre $size     : attribut size de la balise select
 // Parametre $liste    : un liste d'options. Vous utiliserez un foreach pour générer les balises option
 // parametre $affiche  : une des clés de la liste qui permettra l'affichage
-function form_select($label, $name, $multiple, $size, $liste, $affiche) {
+// parametre $value    : valeur passée dans le $_GET, souvent l'$id de l'objet
+function form_select($label, $name, $multiple, $size, $liste, $affiche, $value="id") {
                 echo ("\n<!-- form_select : $label, $name, $multiple, $size,");
                 print_r($liste);
                 echo(" -->\n");
@@ -78,7 +79,7 @@ function form_select($label, $name, $multiple, $size, $liste, $affiche) {
                 echo("<select class='form-select' name='$name' size='$size' >");
                 }
                         foreach($liste as $val){
-                             echo "<option value = ".$val["id"].">".$val[$affiche]."</option>";
+                             echo "<option value = ".$val[$value].">".$val[$affiche]."</option>";
                         }
                 echo'</select>';
                 echo '</div>';
