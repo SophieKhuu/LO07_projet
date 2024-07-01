@@ -12,8 +12,17 @@ include $root . '/app/view/fragment/fragmentMenu.php';
       form_begin("mt-3", "get" , "router.php");
       form_input_hidden('action', "clientInsertedCompte");
         form_input_text("label", "label", "100", "");
-        form_input_text("montant", "montant", "50", "");
-        form_select("Sélectionner une banque", "banque", "", "10", $resultat[1], "id");
+        form_input_text("montant", "montant", "50", "");?>
+        <label for="id">Sélectionner une banque : </label> <select class="form-control" id='id' name='id' style="width: 500px">
+            <?php
+            $data = $results[1];
+            foreach ($data as $row) {
+             echo "<option value = ".$row["id"].">";
+             printf("%s" , $row["label"]);
+             echo"</option>";
+            }
+            ?>
+        </select>
         form_input_submit("submit");
         form_input_reset("reset");
         form_end();

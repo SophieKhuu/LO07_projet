@@ -54,8 +54,6 @@ class ModelPersonne {
           else    {
               return NULL;}
           }
-          
-
         catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return NULL;
