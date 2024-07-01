@@ -29,7 +29,7 @@ class ControllerClient {
     public static function clientInsertedCompte(){
     include 'config.php';
     $results = ModelCompte::insertCompte(
-          htmlspecialchars($_GET['label']), htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['id']), $_SESSION['Nom'], $_SESSION['Prenom']);
+          htmlspecialchars($_GET['label']), htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['id']),  htmlspecialchars($_SESSION['Nom']),  htmlspecialchars($_SESSION['Prenom']));
  
     $vue = $root . '/app/view/Client/viewInsertedCompte.php';
     if (DEBUG)
