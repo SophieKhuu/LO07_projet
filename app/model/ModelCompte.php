@@ -1,5 +1,5 @@
 
-<!-- ----- debut ModelVin -->
+<!-- ----- debut ModelCompte -->
 
 <?php
 require_once 'Model.php';
@@ -79,10 +79,44 @@ class ModelCompte {
            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
            return NULL;
        }
-       
-       
+   }
+   
+    public static function insertCompte($label,$montant,$idBanque, $nom, $prenom){        
+    try {
+    $database = Model::getInstance();
+
+    // recherche de la valeur de la clé = max(id) + 1
+    $query = "select max(id) from Compte";
+    $statement = $database->query($query);
+    $tuple = $statement->fetch();
+    $id = $tuple['0'];
+    $id++;
+    
+    // recherche de la personne id
+    $query = "select id from personne where nom = $nom &&  prenom = $prenom";
+    $statement = $database->query($query);
+    $tuple = $statement->fetch();
+    $idPersonne = $tuple['0'];
+    
+    
+    // ajout d'un nouveau tuple;
+    $query = "insert into Compte value (:id, :label, :montant, :banque_id, :personne_id)";
+    $statement = $database->prepare($query);
+    $statement->execute([
+     'id' => $id,
+     'label' => $label,
+     'montant' => $montant,
+     'banque_id' => $idBanque,
+     'personne_id' => $idPersonne
+   ]);
+   return $id;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return null;
+  }
+        
    }
 
 }
 ?>
-<!-- ----- fin ModelVin -->
+<!-- ----- fin ModelCompte -->

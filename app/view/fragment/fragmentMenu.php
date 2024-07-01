@@ -36,8 +36,8 @@ require_once '../model/ModelPersonne.php';
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router.php?action=afaire">Proposez une fonctionnalité originale</a></li>
-            <li><a class="dropdown-item" href="router.php?action=afaire">Proposez une amélioration du code MVC</a></li>
+            <li><a class="dropdown-item" href="router.php?action=fonctionnalite">Proposez une fonctionnalité originale</a></li>
+            <li><a class="dropdown-item" href="router.php?action=amelioration">Proposez une amélioration du code MVC</a></li>
           </ul>
         </li>
                 <li class="nav-item dropdown">

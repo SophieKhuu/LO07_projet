@@ -21,6 +21,9 @@ class Model extends PDO {
 
   if (!isset(self::$_instance)) {
    try {
+        $dsn = 'mysql:dbname=khuusoph;host=localhost;charset=utf8';
+        $username = 'khuusoph';
+        $passwordConfig = 'l53yFldD';
     self::$_instance = new PDO($dsn, $username, $passwordConfig, $options);
    } catch (PDOException $e) {
     printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());

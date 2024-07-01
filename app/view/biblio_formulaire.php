@@ -60,12 +60,12 @@ function form_check($label, $name, $value){
 // =========================
 
 // Parametre $label    : permet un affichage (balise label)
-// Parametre $name     : attribut pour identifier le composant du formulaire
+// Parametre $name     : attribut pour identifier le composant du formulaire et qui doit appartenir aux clés de la liste (souvent id)
 // Parametre $multiple : si cet attribut n'est pas vide alors sélection multiple possible
 // Parametre $size     : attribut size de la balise select
 // Parametre $liste    : un liste d'options. Vous utiliserez un foreach pour générer les balises option
-
-function form_select($label, $name, $multiple, $size, $liste) {
+// parametre $affiche  : une des clés de la liste qui permettra l'affichage
+function form_select($label, $name, $multiple, $size, $liste, $affiche) {
                 echo ("\n<!-- form_select : $label, $name, $multiple, $size,");
                 print_r($liste);
                 echo(" -->\n");
@@ -78,7 +78,7 @@ function form_select($label, $name, $multiple, $size, $liste) {
                 echo("<select class='form-select' name='$name' size='$size' >");
                 }
                         foreach($liste as $val){
-                        echo("<option value='$val'>$val</option>");
+                             echo "<option value = ".$val["id"].">".$val[$affiche]."</option>";
                         }
                 echo'</select>';
                 echo '</div>';

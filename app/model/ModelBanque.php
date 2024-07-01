@@ -27,7 +27,7 @@ class ModelBanque {
    public static function getAll(){
        try{
            $database = Model::getInstance();
-           $query = "select label, pays from banque";
+           $query = "select id, label, pays from banque";
            $statement= $database->prepare($query);
            $statement->execute();
             // tableau "data" associatif contenant les données

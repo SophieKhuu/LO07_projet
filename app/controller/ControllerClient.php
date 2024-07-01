@@ -19,7 +19,7 @@ class ControllerClient {
     
     public static function clientAddCompte(){    
     include 'config.php';
-    $resultat = ModelBanque::getAll();
+    $results = ModelBanque::getAll();
     $vue = $root . '/app/view/Client/viewInsertCompte.php';
     if (DEBUG)
     echo ("ControllerClient : clientAddCompte : vue = $vue");
@@ -27,6 +27,14 @@ class ControllerClient {
     }
     
     public static function clientInsertedCompte(){
+    include 'config.php';
+    $results = ModelCompte::insertCompte(
+          htmlspecialchars($_GET['label']), htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['id']), $_SESSION['Nom'], $_SESSION['Prenom']);
+ 
+    $vue = $root . '/app/view/Client/viewInsertedCompte.php';
+    if (DEBUG)
+    echo ("ControllerMenu : menu : vue = $vue");
+    require ($vue);
         
     }
 

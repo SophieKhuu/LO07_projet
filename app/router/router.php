@@ -34,6 +34,8 @@ switch ($action) {
  case "inscription":
  case "registration":
  case "deconnexion":
+ case "fonctionnalite":
+ case "amelioration":
      ControllerMenu::$action($args);
      break;
  // Taches pour l'administrateur

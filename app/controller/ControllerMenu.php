@@ -51,10 +51,10 @@ class ControllerMenu {
  // création du compte
    public static function registration() {
   include 'config.php';
-  $resultat = ModelPersonne::insertClient(
+  $results = ModelPersonne::insertClient(
           htmlspecialchars($_GET['nom']), htmlspecialchars($_GET['prenom']), htmlspecialchars($_GET['login']), htmlspecialchars($_GET['password']));
  
-  $vue = $root . '/app/view/Menu/viewRegistred.php';
+  $vue = $root . '/app/view/Client/viewRegistred.php';
   if (DEBUG)
    echo ("ControllerMenu : menu : vue = $vue");
   require ($vue);
@@ -70,7 +70,22 @@ class ControllerMenu {
   require ($vue);
  }
  
+ public static function fonctionnalite(){
+  include 'config.php';
+  $vue = $root . '/app/view/Innovations/viewFonctionnalite.php';
+  if (DEBUG)
+   echo ("ControllerMenu : fonctionnalite : vue = $vue");
+  require ($vue);
+ }
  
+  
+ public static function amelioration(){
+  include 'config.php';
+  $vue = $root . '/app/view/Innovations/viewAmelioration.php';
+  if (DEBUG)
+   echo ("ControllerMenu : fonctionnalite : vue = $vue");
+  require ($vue);
+ }
 }
 ?>
 <!-- ----- fin ControllerClient -->
