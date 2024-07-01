@@ -39,16 +39,36 @@ class ControllerAdministrateur {
         include 'config.php';
         $vue = $root . '/app/view/Administrateur/viewInsertedBanque.php';
         if (DEBUG)
-            echo ("ControllerAdministrateur : administrateurAddBanque : vue = $vue");
+            echo ("ControllerAdministrateur : administrateurInsertedBanque : vue = $vue");
         require ($vue);
     }
+    
+    // Affiche le formulaire de sélection d'une banque 
+    public static function administrateurSelectBanque(){
+        include 'config.php';
+        $results = ModelBanque::getAll();
+        $vue = $root . '/app/view/Administrateur/viewSelectBanque.php';
+        if (DEBUG)
+            echo ("ControllerAdministrateur : administrateurSelectBanque : vue = $vue");
+        require ($vue);
+    }    
+    
+    // Liste des comptes d'une seule banque
+    public static function administrateurBanqueComptes(){
+        $results = ModelCompte::getBanqueComptes(htmlspecialchars($_GET['id']));
+        include 'config.php';
+        $vue = $root.'/app/view/viewAll.php';
+    if (DEBUG)
+        echo ("ControllerAdministrateur : administrateurBanqueComptes : vue = $vue");
+    require ($vue);
+    }  
     // Liste des clients
     public static function administrateurReadClient(){
         $results = ModelPersonne::getClient();
         include 'config.php';
         $vue = $root.'/app/view/viewAll.php';
     if (DEBUG)
-        echo ("ControllerAdministrateur : administrateurReadBanque : vue = $vue");
+        echo ("ControllerAdministrateur : administrateurReadClient : vue = $vue");
     require ($vue);
     }
 
@@ -58,7 +78,7 @@ class ControllerAdministrateur {
         include 'config.php';
         $vue = $root.'/app/view/viewAll.php';
     if (DEBUG)
-        echo ("ControllerAdministrateur : administrateurReadBanque : vue = $vue");
+        echo ("ControllerAdministrateur : administrateurReadAdministrateur : vue = $vue");
     require ($vue);
     }
 
@@ -68,7 +88,7 @@ class ControllerAdministrateur {
         include 'config.php';
         $vue = $root.'/app/view/viewAll.php';
     if (DEBUG)
-        echo ("ControllerAdministrateur : administrateurReadBanque : vue = $vue");
+        echo ("ControllerAdministrateur : administrateurReadCompte : vue = $vue");
     require ($vue);
     }    
  
@@ -78,7 +98,7 @@ class ControllerAdministrateur {
         include 'config.php';
         $vue = $root.'/app/view/viewAll.php';
     if (DEBUG)
-        echo ("ControllerAdministrateur : administrateurReadBanque : vue = $vue");
+        echo ("ControllerAdministrateur : administrateurReadResidence : vue = $vue");
     require ($vue);
     } 
 }

@@ -117,6 +117,30 @@ class ModelCompte {
         
    }
 
+   public static function getBanqueComptes($id){
+       try{
+           $database = Model::getInstance();
+           $query = "SELECT P.prenom, P.nom, B.label as banque, C.label as compte, C.montant from personne as P, banque as B, compte as C WHERE B.id = :id AND C.banque_id = B.id AND C.personne_id = P.id";
+           $statement= $database->prepare($query);
+           $statement->execute([
+                'id' => $id
+            ]);
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }   
+
 }
 ?>
 <!-- ----- fin ModelCompte -->
