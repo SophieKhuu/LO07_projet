@@ -14,13 +14,13 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
       form_begin("mt-3", "get" , "router.php");
       form_input_hidden('action', "connexion");
-        form_input_text("nom", "nom", "50", "");
-        form_input_text("prenom", "prenom", "50", "");
-        form_input_text("login", "login", "50", "");
-        form_input_password("password", "password", "50", "");
-        form_input_submit("submit");
-        form_input_reset("reset");
-        form_end();
+      form_input_text("nom", "nom", "50", "");
+      form_input_text("prenom", "prenom", "50", "");
+      form_input_text("login", "login", "50", "");
+      form_input_password("password", "password", "50", "");
+      form_input_submit("submit");
+      form_input_reset("reset");
+      form_end();
     ?> 
   </div>
   <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>

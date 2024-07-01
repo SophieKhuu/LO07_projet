@@ -17,6 +17,17 @@ class ControllerClient {
     require ($vue);
     }
     
+    public static function clientAddCompte(){    
+    include 'config.php';
+    $vue = $root . '/app/view/Client/viewInsertCompte.php';
+    if (DEBUG)
+    echo ("ControllerClient : clientAddCompte : vue = $vue");
+    require ($vue);
+    }
+    
+    public static function clientInsertedCompte(){
+        
+    }
  
 }
 ?>

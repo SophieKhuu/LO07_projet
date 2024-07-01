@@ -47,6 +47,7 @@ switch ($action) {
  // Taches pour le client
  case "clientReadMyCompte":
  case "clientAddCompte":
+ case "clientInsertedCompte":
  case "clientExchangeCompte":
  case "clientReadMyResidence": 
  case "clientAddResidence":
