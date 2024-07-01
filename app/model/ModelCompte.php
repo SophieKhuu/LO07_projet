@@ -80,6 +80,31 @@ class ModelCompte {
            return NULL;
        }
    }
+      public static function getMyCompteWithID($nom, $prenom){
+              try{
+           $database = Model::getInstance();
+           $query = "select C.id, B.label as banque_label, B.pays as banque_pays, C.label as compte_label, C.montant as compte_montant from compte as C, personne as P, banque as B WHERE P.nom = :nom && P.prenom = :prenom && C.personne_id = P.id && C.banque_id = B.id ORDER BY C.label";
+           $statement= $database->prepare($query);
+           $statement->execute([
+                'nom' => $nom,
+               'prenom' => $prenom
+            ]);
+            // tableau "data" associatif contenant les données
+           $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+           // tableau "cols" contenant les noms des colonnes 
+           $cols = array(); 
+           for ($i=0; $i<= $statement->columnCount()-1; $i++){
+                $cols[$i] = $statement->getColumnMeta($i)['name'];
+            }
+            // fusion des deux tableaux en un grand tableau pour transmettre les résultats
+            $results = array($cols, $data);
+           return $results;
+       } catch (PDOException $e) {
+           printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+           return NULL;
+       }
+   }
+   
    
     public static function insertCompte($label,$montant,$idBanque, $nom, $prenom){        
     try {
@@ -113,13 +138,39 @@ class ModelCompte {
      'banque_id' => $idBanque,
      'personne_id' => $idPersonne
    ]);
-   return ($idPersonne);
+   return ($id);
   } catch (PDOException $e) {
    printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
    return null;
   }
-        
-   }
+  }
+  
+      public static function transfertCompte($montant,$id1,$id2){
+          
+    try {
+    $database = Model::getInstance();
+
+    $query = "update compte set montant = montant - :montant where id = :id";
+    $statement = $database->prepare($query);
+    $statement->execute([
+     'id' => $id1,
+     'montant' => $montant,
+   ]);
+        $query = "update compte set montant = montant + :montant where id = :id";
+    $statement = $database->prepare($query);
+    $statement->execute([
+     'id' => $id2,
+     'montant' => $montant,
+    ]);
+    return $montant;
+    }
+     catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return null;
+  }
+          
+          
+      }      
 
 }
 ?>

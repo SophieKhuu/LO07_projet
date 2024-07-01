@@ -11,8 +11,8 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
       form_begin("mt-3", "get" , "router.php");
       form_input_hidden('action', "clientInsertedCompte");
-        form_input_text("label", "label", "100", "");
-        form_input_text("montant", "montant", "50", "");
+        form_input_text("label", "label", "100", "", $required="required");
+        form_input_text("montant", "montant", "50", "", $required="required");
         /* Ancienne version :
             <label for="id">Sélectionner une banque : </label> <select class="form-control" id='id' name='id' style="width: 500px">
             <?php

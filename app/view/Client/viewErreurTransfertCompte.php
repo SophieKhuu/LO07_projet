@@ -9,16 +9,8 @@ include $root . '/app/view/fragment/fragmentMenu.php';
   <div class="container">
     <!-- ===================================================== -->
     <?php
-    if ($results) {
-     echo ("<h3>Le nouveau compte a été ajoutée </h3>");
-     echo("<ul>");
-     echo ("<li>label = " . $_GET['label'] . "</li>");
-     echo ("<li>montant = " . $_GET['montant'] . "</li>");
-     echo("</ul>");
-    } else {
-     echo ("<h3>Problème d'insertion du compte</h3>");
-     echo ("label = " . $_GET['label']);
-    }
+     echo ("<h3>Problème de transfert de compte</h3>");
+     echo("Assurez vous que vous ayez 2 comptes, que le transfert effectué soit entre 2 différents et que tout les champs soient remplis")
     ?>
   </div>
     

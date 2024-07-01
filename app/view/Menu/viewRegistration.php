@@ -11,9 +11,9 @@ include $root . '/app/view/fragment/fragmentMenu.php';
     <?php
       form_begin("mt-3", "get" , "router.php");
       form_input_hidden('action', "registration");
-        form_input_text("nom", "nom", "50", "");
-        form_input_text("prenom", "prenom", "50", "");
-        form_input_text("login", "login", "50", "");
+        form_input_text("nom", "nom", "50", "", $required="required");
+        form_input_text("prenom", "prenom", "50", "", $required="required");
+        form_input_text("login", "login", "50", "", $required="required");
         form_input_password("password", "password", "50", "");
         form_input_submit("submit");
         form_input_reset("reset");

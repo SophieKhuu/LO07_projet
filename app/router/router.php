@@ -52,7 +52,8 @@ switch ($action) {
  case "clientReadMyCompte":
  case "clientAddCompte":
  case "clientInsertedCompte":
- case "clientExchangeCompte":
+ case "clientTransfertCompte":
+ case "clientTransferedCompte":
  case "clientReadMyResidence": 
  case "clientAddResidence":
  case "clientReadPatrimoine":

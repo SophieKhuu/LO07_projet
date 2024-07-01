@@ -37,6 +37,37 @@ class ControllerClient {
     require ($vue);
         
     }
+    
+    public static function clientTransfertCompte(){    
+    include 'config.php';
+    $results = ModelCompte::getMyCompteWithID(htmlspecialchars($_SESSION['Nom']),  htmlspecialchars($_SESSION['Prenom']));
+    if(count($results[1])>1){
+    $vue = $root . '/app/view/Client/viewTransfertCompte.php';
+    }
+    else{
+    $vue = $root . '/app/view/Client/viewErreurTransfertCompte.php';    
+    }
+    if (DEBUG)
+    echo ("ControllerClient : clientAddCompte : vue = $vue");
+    require ($vue);
+    }
+    
+    public static function clientTransferedCompte(){
+    include 'config.php';
+    if($_GET['montant']=='' or $_GET['montant']=='0' or $_GET['id1']=='' or $_GET['id2']=='' or  $_GET['id1']== $_GET['id2']){
+            $vue = $root . '/app/view/Client/viewErreurTransfertCompte.php';   
+    }
+    else{
+    $results = ModelCompte::transfertCompte(
+          htmlspecialchars($_GET['montant']), $_GET['id1'], $_GET['id2']);
+ 
+    $vue = $root . '/app/view/Client/viewTransferedCompte.php';
+    }
+    if (DEBUG)
+    echo ("ControllerMenu : menu : vue = $vue");
+    require ($vue);
+        
+    }
 
     public static function clientReadMyResidence(){
         $results = ModelResidence::getMyResidence($_SESSION['Nom'], $_SESSION['Prenom']);
