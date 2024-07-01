@@ -15,11 +15,11 @@ function form_begin($class, $method, $action) {
 // form_input_text
 // --------------------------------------------------
 
-function form_input_text($label, $name, $size, $value) {
+function form_input_text($label, $name, $size, $value, $required='') {
     echo ("\n<!-- form_input_text : $label $name $size $value -->\n");
     echo ("<div class='form-group col-6'>");
     echo (" <label for='$label' class=' fw-bold'>$label</label>");
-    echo (" <input type='text' class='form-control' name='$name' size='$size' value='$value' >");
+    echo (" <input type='text' class='form-control' name='$name' size='$size' value='$value' $required>");
     echo ("</div>");
 }
 
@@ -94,6 +94,7 @@ function form_input_reset($value) {
 // =========================
 
 function form_input_submit($value) {
+    echo ("<br>");
     echo ("\n<!-- form_input_submit : $value -->\n");
     echo ("<button type='submit' class='btn btn-primary' value='$value'>Submit</button>");
 }
@@ -104,6 +105,7 @@ function form_input_submit($value) {
 function form_end() {
     echo ("<!-- form_end -->\n");
     echo("</form>");
+    echo ("<br>");
     echo ("\n<!-- ============================================== -->\n");
 }
 

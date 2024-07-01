@@ -46,6 +46,31 @@ class ModelBanque {
        }
    }
 
+    public static function insert($label, $pays) {
+        try {
+            $database = Model::getInstance();
+
+            // recherche de la valeur de la clé = max(id) + 1
+            $query = "select max(id) from banque";
+            $statement = $database->query($query);
+            $tuple = $statement->fetch();
+            $id = $tuple['0'];
+            $id++;
+
+            // ajout d'un nouveau tuple;
+            $query = "insert into banque value (:id, :label, :pays)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+                'label' => $label,
+                'pays' => $pays
+            ]);
+            return $id;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return -1;
+        }
+    }
 }
 ?>
 <!-- ----- fin ModelVin -->

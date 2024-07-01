@@ -38,6 +38,8 @@ switch ($action) {
      break;
  // Taches pour l'administrateur
  case "administrateurReadBanque":
+ case "administrateurAddBanque":
+ case "administrateurInsertedBanque":
  case "administrateurReadClient":
  case "administrateurReadAdministrateur":
  case "administrateurReadCompte": 
