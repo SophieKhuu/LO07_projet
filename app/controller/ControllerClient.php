@@ -19,6 +19,7 @@ class ControllerClient {
     
     public static function clientAddCompte(){    
     include 'config.php';
+    $resultat = ModelBanque::getAll();
     $vue = $root . '/app/view/Client/viewInsertCompte.php';
     if (DEBUG)
     echo ("ControllerClient : clientAddCompte : vue = $vue");
