@@ -56,12 +56,15 @@ class ModelCompte {
            return NULL;
        }
    }
-   public static function getMyCompte($nom, $prenom, $login){
+   public static function getMyCompte($nom, $prenom){
               try{
            $database = Model::getInstance();
-           $query = "select C.id, C.label, C.montant, C.banque_id, C.personne_id from compte as C, personne as P WHERE P.nom = $nom && P.prenom = $prenom && P.login = $login && C.personne_id = P.id ORDER BY C.label;";
+           $query = "select B.label as banque_label, B.pays as banque_pays, C.label as compte_label, C.montant as compte_montant from compte as C, personne as P, banque as B WHERE P.nom = :nom && P.prenom = :prenom && C.personne_id = P.id && C.banque_id = B.id ORDER BY C.label";
            $statement= $database->prepare($query);
-           $statement->execute();
+           $statement->execute([
+                'nom' => $nom,
+               'prenom' => $prenom
+            ]);
             // tableau "data" associatif contenant les données
            $data = $statement->fetchAll(PDO::FETCH_ASSOC);
            // tableau "cols" contenant les noms des colonnes 

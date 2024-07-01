@@ -41,7 +41,7 @@ switch ($action) {
  case "administrateurReadClient":
  case "administrateurReadAdministrateur":
  case "administrateurReadCompte": 
-  case "administrateurReadResidence": 
+ case "administrateurReadResidence": 
      ControllerAdministrateur::$action($args);
      break;
  // Taches pour le client
