@@ -8,10 +8,10 @@ require_once '../model/ModelPersonne.php';
     <a class="navbar-brand" href="router.php?action='menu'">HUGOT - KHUU
             <?php
                     if ($_SESSION["login"]== ModelPersonne::ADMINISTRATEUR){
-                        echo "Administrateur || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
+                        echo "|| Administrateur || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
                     }
                     elseif ($_SESSION["login"]== ModelPersonne::CLIENT){
-                        echo "Client || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
+                        echo "|| Client || ".$_SESSION['Nom']. " ". $_SESSION['Prenom'];
                     }
 ?>
     </a>

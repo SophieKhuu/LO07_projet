@@ -28,6 +28,7 @@ session_start();
 
 // --- Liste des méthodes autorisées
 switch ($action) {
+ // Taches pour le menu de base
  case "login":
  case "connexion":
  case "inscription":
@@ -35,12 +36,22 @@ switch ($action) {
  case "deconnexion":
      ControllerMenu::$action($args);
      break;
+ // Taches pour l'administrateur
  case "administrateurReadBanque":
  case "administrateurReadClient":
  case "administrateurReadAdministrateur":
  case "administrateurReadCompte": 
   case "administrateurReadResidence": 
      ControllerAdministrateur::$action($args);
+     break;
+ // Taches pour le client
+ case "clientReadMyCompte":
+ case "clientAddCompte":
+ case "clientExchangeCompte":
+ case "clientReadMyResidence": 
+ case "clientAddResidence":
+ case "clientReadPatrimoine":
+     ControllerClient::$action($args);
      break;
  // Tache par défaut
  default:
