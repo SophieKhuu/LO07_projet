@@ -81,8 +81,6 @@ class ControllerClient {
     require ($vue);
     }    
 
-<<<<<<< HEAD
-
     public static function clientAddResidence(){
         include 'config.php';
         $results = ModelResidence::getAllOtherResidence($_SESSION['Nom'], $_SESSION['Prenom']);
@@ -121,8 +119,6 @@ class ControllerClient {
     require ($vue);
     }
     
-    
-=======
     // Affiche le patrimoine du client 
     public static function clientReadPatrimoine(){
         $results = ModelCompte::getMyPatrimoine($_SESSION['Nom'], $_SESSION['Prenom']);
@@ -132,7 +128,6 @@ class ControllerClient {
         echo ("ControllerClient : clientReadMyCompte : vue = $vue");
     require ($vue);
     }
->>>>>>> 211d1913bdb544f4b299357ad8c6b7df4fb0dce7
 }
 ?>
 <!-- ----- fin ControllerClient -->
