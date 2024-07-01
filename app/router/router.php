@@ -58,6 +58,8 @@ switch ($action) {
  case "clientTransferedCompte":
  case "clientReadMyResidence": 
  case "clientAddResidence":
+ case "clientAddedResidence":
+ case "clientHaveBuyResidence":
  case "clientReadPatrimoine":
      ControllerClient::$action($args);
      break;

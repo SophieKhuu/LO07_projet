@@ -74,9 +74,50 @@ class ControllerClient {
         include 'config.php';
         $vue = $root.'/app/view/viewAll.php';
     if (DEBUG)
-        echo ("ControllerClient : clientReadMyCompte : vue = $vue");
+        echo ("ControllerClient : clientReadMyResidence : vue = $vue");
     require ($vue);
     }    
+
+
+    public static function clientAddResidence(){
+        include 'config.php';
+        $results = ModelResidence::getAllOtherResidence($_SESSION['Nom'], $_SESSION['Prenom']);
+        $vue = $root . '/app/view/Client/viewAddResidence.php';
+        if (DEBUG)
+        echo ("ControllerClient : clientAddResidence : vue = $vue");
+        require ($vue);
+    }
+    
+    public static function clientAddedResidence(){
+    include 'config.php';
+    $data1 = ModelCompte::getMyCompteWithID($_SESSION['Nom'], $_SESSION['Prenom']);
+    $compteAcheteur=$data1[1];
+    $prix = ModelResidence::getprixResidence($_GET['id']);
+    $vendeur = ModelResidence::getVendeurResidence($_GET['id']);
+    $data2 = ModelCompte::getMyCompteWithID($vendeur["0"], $vendeur["1"]);
+    $compteVendeur=$data2[1];
+    if($compteAcheteur!=null && $compteVendeur!=null){
+         $vue = $root . '/app/view/Client/viewAddedResidence.php';  
+    }
+    else{
+        $vue = $root . '/app/view/Client/viewErreurAddedResidence.php';  
+    }
+    if (DEBUG)
+    echo ("ControllerClient : clientAddedResidence : vue = $vue");
+    require ($vue);
+    }
+    
+        public static function clientHaveBuyResidence(){
+    include 'config.php';
+    $results1 = ModelCompte::transfertCompte($_GET["prix"], $_GET['idCompteAcheteur'], $_GET['idCompteVendeur']);
+    $results = ModelResidence::buyResidence($_GET['idResidence'], $_SESSION['Nom'], $_SESSION['Prenom']);
+    $vue = $root . '/app/view/Client/viewHaveBuyResidence.php'; 
+    if (DEBUG)
+    echo ("ControllerClient : clientHaveBuyResidence : vue = $vue");
+    require ($vue);
+    }
+    
+    
 }
 ?>
 <!-- ----- fin ControllerClient -->

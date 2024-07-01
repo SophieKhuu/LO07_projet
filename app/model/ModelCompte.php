@@ -194,7 +194,7 @@ class ModelCompte {
            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
            return NULL;
        }
-   }   
+   } 
 
 }
 ?>
